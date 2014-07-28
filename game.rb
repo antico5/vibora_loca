@@ -18,6 +18,7 @@ class Game < Gosu::Window
 
   def update
     @objects.each &:update
+
   end
 
   def draw
@@ -34,9 +35,7 @@ class Game < Gosu::Window
 
   private
     def spawn_snake
-      snake = Snake.new self
-      register snake
-      snake
+      Snake.new self
     end
 end
 

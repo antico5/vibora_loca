@@ -6,6 +6,7 @@ class Snake
   attr_accessor :x, :y, :image, :game
 
   def initialize game
+    game.register self
     @x = @y = 0
     @game = game
     @image = game.image "head.jpg"
@@ -13,7 +14,6 @@ class Snake
 
   def update
     handle_controls
-
   end
 
   def draw
