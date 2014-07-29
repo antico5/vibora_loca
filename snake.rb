@@ -1,9 +1,14 @@
 require_relative "controls"
+require_relative "timeable_action"
 
 class Snake
   include Controls
+  include TimeableAction
+  extend ClassMethods
 
   attr_accessor :x, :y, :image, :game
+
+  timeable_action 0.5, :move
 
   def initialize game
     game.register self
@@ -17,22 +22,33 @@ class Snake
   end
 
   def draw
-    image.draw x, y, 1
+    map.draw x, y, image
   end
 
   def up
-    self.y -= 10
+    move 0, -1
   end
 
   def down
-    self.y += 10
+    move 0, 1
   end
 
   def left
-    self.x -= 10
+    move -1, 0
   end
 
   def right
-    self.x += 10
+    move 1, 0
   end
+
+  def move_action x, y
+    self.x += x
+    self.y += y
+  end
+
+  private
+
+    def map
+      game.map
+    end
 end
