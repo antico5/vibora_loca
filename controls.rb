@@ -1,9 +1,9 @@
 module Controls
   def mappings
-    @mappings ||= { Gosu::KbLeft  => { action: :move, params: [-1,0] },
-                    Gosu::KbRight => { action: :move, params: [1,0]  },
-                    Gosu::KbUp    => { action: :move, params: [0,-1] },
-                    Gosu::KbDown  => { action: :move, params: [0,1]  } }
+    @mappings ||= { Gosu::KbLeft  => { action: :direction=, params: :left },
+                    Gosu::KbRight => { action: :direction=, params: :right },
+                    Gosu::KbUp    => { action: :direction=, params: :up },
+                    Gosu::KbDown  => { action: :direction=, params: :down } }
   end
 
   def handle_controls
