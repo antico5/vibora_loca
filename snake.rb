@@ -25,22 +25,6 @@ class Snake
     map.draw x, y, image
   end
 
-  def up
-    move 0, -1
-  end
-
-  def down
-    move 0, 1
-  end
-
-  def left
-    move -1, 0
-  end
-
-  def right
-    move 1, 0
-  end
-
   def move_action x, y
     self.x += x
     self.y += y
