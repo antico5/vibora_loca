@@ -3,7 +3,8 @@ module Controls
     @mappings ||= { Gosu::KbLeft  => { action: :direction=, params: :left },
                     Gosu::KbRight => { action: :direction=, params: :right },
                     Gosu::KbUp    => { action: :direction=, params: :up },
-                    Gosu::KbDown  => { action: :direction=, params: :down } }
+                    Gosu::KbDown  => { action: :direction=, params: :down },
+                    Gosu::KbSpace => { action: :grow, params: 1 }, }
   end
 
   def handle_controls
