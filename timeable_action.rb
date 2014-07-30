@@ -33,4 +33,8 @@ module TimeableAction
     action_timers[key] = Time.now.to_f
   end
 
+  def self.included mod
+    mod.extend ClassMethods
+  end
+
 end
