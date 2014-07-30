@@ -1,6 +1,6 @@
 class Map
-  HORIZONTAL_TILES = 10
-  VERTICAL_TILES = 10
+  HORIZONTAL_TILES = 20
+  VERTICAL_TILES = 20
 
   attr_accessor :game
 
@@ -8,11 +8,19 @@ class Map
     @game = game
   end
 
-  def draw x, y, image
+  def draw x, y, image, options = {}
+    rotation = options[:rotation] || 0
     x = graphic_x(x)
     y = graphic_y(y)
     factors = scale_factors image
-    image.draw x, y, 1, factors[:x], factors[:y]
+    image.draw_rot x, y, 1, rotation, 0.5, 0.5, factors[:x], factors[:y]
+  end
+
+  def out_of_bounds? position
+    position[:x] < 0 ||
+      position[:x] >= HORIZONTAL_TILES ||
+      position[:y] < 0 ||
+      position[:y] >= VERTICAL_TILES
   end
 
   private
